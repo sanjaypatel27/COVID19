@@ -8,5 +8,5 @@ class IndiaData {
     @SerializedName("key_values")
     lateinit var keyValueList : ArrayList<KeyValues>
     @SerializedName("statewise")
-    lateinit var stateWiseList : ArrayList<StateWise>
+    lateinit var stateList : ArrayList<StateWise>
 }
