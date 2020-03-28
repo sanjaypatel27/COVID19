@@ -2,5 +2,12 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#3DDC84</color>
+
+    <color name="failAlert">#AD0D1E</color>
+    <color name="successAlert">#3DDC84</color>
+    
+    <color name="confirmedText">#ff073a</color>
+    <color name="confirmedBackground">#ff073a</color>
+
 </resources>
