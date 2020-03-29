@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">COVID !9</string>
-    <string name="title_home">India</string>
+    <string name="title_home">@string/india</string>
     <string name="title_world">World</string>
     <string name="title_news">News</string>
 
+    <string name="india">India</string>
     <string name="india_title">India COVID-19 Tracker</string>
-    <string name="india_sub_title">A Crowdsourced Initiative</string>
     <string name="last_update">Last Updated</string>
+
+    <string name="district">DISTRICT</string>
 
 
     <string name="confirmed">CONFIRMED</string>

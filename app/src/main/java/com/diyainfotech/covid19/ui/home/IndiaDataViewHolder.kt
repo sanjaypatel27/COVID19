@@ -9,24 +9,33 @@ import com.diyainfotech.covid19.api.india.StateWise
 
 class IndiaDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val txtConfirmedCase = itemView.findViewById(R.id.txt_confirmed_case) as TextView
-    private val txtConfirmedCaseDelta = itemView.findViewById(R.id.txt_confirmed_case_delta) as TextView
+    private val txtConfirmedCaseDelta =
+        itemView.findViewById(R.id.txt_confirmed_case_delta) as TextView
     private val txtActiveCase = itemView.findViewById(R.id.txt_active_case) as TextView
     private val txtActiveCaseDelta = itemView.findViewById(R.id.txt_active_case_delta) as TextView
     private val txtRecoveredCase = itemView.findViewById(R.id.txt_recovered_case) as TextView
-    private val txtRecoveredCaseDelta = itemView.findViewById(R.id.txt_recovered_case_delta) as TextView
+    private val txtRecoveredCaseDelta =
+        itemView.findViewById(R.id.txt_recovered_case_delta) as TextView
     private val txtDeceasedCase = itemView.findViewById(R.id.txt_deceased_case) as TextView
-    private val txtDeceasedCaseDelta = itemView.findViewById(R.id.txt_deceased_case_delta) as TextView
+    private val txtDeceasedCaseDelta =
+        itemView.findViewById(R.id.txt_deceased_case_delta) as TextView
 
-    fun bindIndiaData(stateWise: StateWise){
+    fun bindIndiaData(stateWise: StateWise) {
         val keyValues = IndiaDataServiceManager.indiaData!!.keyValueList[0]
         txtConfirmedCase.text = stateWise.confirmed
         txtActiveCase.text = stateWise.active
         txtRecoveredCase.text = stateWise.recovered
         txtDeceasedCase.text = stateWise.deaths
         keyValues.let {
-            txtConfirmedCaseDelta.text ="[+${keyValues.confirmeddelta}]"
-            txtRecoveredCaseDelta.text ="[+${keyValues.recovereddelta}]"
-            txtDeceasedCaseDelta.text ="[+${keyValues.deceaseddelta}]"
+            if (keyValues.confirmeddelta.toInt() > 0) {
+                txtConfirmedCaseDelta.text = "[+${keyValues.confirmeddelta}]"
+            }
+            if (keyValues.recovereddelta.toInt() > 0) {
+                txtRecoveredCaseDelta.text = "[+${keyValues.recovereddelta}]"
+            }
+            if (keyValues.deceaseddelta.toInt() > 0) {
+                txtDeceasedCaseDelta.text = "[+${keyValues.deceaseddelta}]"
+            }
         }
     }
 }

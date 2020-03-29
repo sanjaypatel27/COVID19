@@ -11,9 +11,21 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
 
+        <TextView
+            android:id="@+id/india_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:text="@string/india"
+            android:padding="5sp"
+            android:textColor="@color/stateNameText"
+            android:textSize="20sp" />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/india_title"
             android:weightSum="4">
 
             <androidx.cardview.widget.CardView

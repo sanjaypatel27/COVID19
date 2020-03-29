@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/stateCellCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5sp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/state_name"
@@ -19,9 +21,11 @@
             android:textSize="@dimen/india_state_name" />
 
         <LinearLayout
+            android:id="@+id/state_data_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/state_name"
+            android:layout_marginBottom="10dp"
             android:weightSum="4">
 
             <androidx.cardview.widget.CardView
@@ -48,11 +52,20 @@
                         android:textSize="@dimen/india_state_type_name" />
 
                     <TextView
+                        android:id="@+id/txt_confirmed_case_delta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_confirmed_case"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/confirmedText"
+                        android:textSize="@dimen/india_state_type_name" />
+
+                    <TextView
                         android:id="@+id/txt_confirmed_case"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_confirmed_case_delta"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/title_confirmed_case"
                         android:textColor="@color/confirmedText"
                         android:textSize="@dimen/india_state_type_value" />
                 </RelativeLayout>
@@ -80,16 +93,25 @@
                         android:layout_centerHorizontal="true"
                         android:text="@string/active"
                         android:textColor="@color/activeText"
-                         android:textSize="@dimen/india_state_type_name" />
+                        android:textSize="@dimen/india_state_type_name" />
+
+                    <TextView
+                        android:id="@+id/txt_active_case_delta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_active_case"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/activeText"
+                        android:textSize="@dimen/india_state_type_name" />
 
                     <TextView
                         android:id="@+id/txt_active_case"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_active_case_delta"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/title_active_case"
                         android:textColor="@color/activeText"
-                       android:textSize="@dimen/india_state_type_value" />
+                        android:textSize="@dimen/india_state_type_value" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -116,16 +138,25 @@
                         android:layout_centerHorizontal="true"
                         android:text="@string/recovered"
                         android:textColor="@color/recoveredText"
-                         android:textSize="@dimen/india_state_type_name" />
+                        android:textSize="@dimen/india_state_type_name" />
+
+                    <TextView
+                        android:id="@+id/txt_recovered_case_delta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_recovered_case"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/recoveredText"
+                        android:textSize="@dimen/india_state_type_name" />
 
                     <TextView
                         android:id="@+id/txt_recovered_case"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_recovered_case_delta"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/title_recovered_case"
                         android:textColor="@color/recoveredText"
-                       android:textSize="@dimen/india_state_type_value" />
+                        android:textSize="@dimen/india_state_type_value" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
@@ -151,21 +182,80 @@
                         android:layout_centerHorizontal="true"
                         android:text="@string/deceased"
                         android:textColor="@color/deceasedText"
-                         android:textSize="@dimen/india_state_type_name" />
+                        android:textSize="@dimen/india_state_type_name" />
+
+                    <TextView
+                        android:id="@+id/txt_deceased_case_delta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_deceased_case"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/deceasedText"
+                        android:textSize="@dimen/india_state_type_name" />
 
                     <TextView
                         android:id="@+id/txt_deceased_case"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_deceased_case_delta"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@id/title_deceased_case"
                         android:textColor="@color/deceasedText"
-                       android:textSize="@dimen/india_state_type_value" />
+                        android:textSize="@dimen/india_state_type_value" />
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/district_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/state_data_layout"
+            android:visibility="visible">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/district_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginEnd="10sp"
+                android:layout_marginBottom="5sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10sp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/district_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:padding="5sp"
+                        android:text="@string/district"
+                        android:textColor="@color/districtName"
+                        android:textSize="@dimen/india_state_name" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4"
+                        android:text="@string/confirmed"
+                        android:textColor="@color/districtName"
+                        android:textSize="@dimen/india_state_type_value" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/district_wise_data_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/district_title_layout"
+                android:layout_margin="5sp" />
+        </RelativeLayout>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
