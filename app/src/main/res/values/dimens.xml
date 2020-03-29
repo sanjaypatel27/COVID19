@@ -2,4 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="india_title">24sp</dimen>
+    <dimen name="india_sub_title">11sp</dimen>
+    <dimen name="india_state_name">16sp</dimen>
+    <dimen name="india_state_type_name">10sp</dimen>
+    <dimen name="india_state_type_value">18sp</dimen>
 </resources>

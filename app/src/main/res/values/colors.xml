@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#28a745</color>
+    <color name="colorPrimaryDark">#90f3a6</color>
+    <color name="colorAccent">#3DDC84</color>
+
+    <color name="failAlert">#AD0D1E</color>
+    <color name="successAlert">#3DDC84</color>
+    
+    <color name="stateNameText">#6c757d</color>
+    <color name="updateTimeText">#90f3a6</color>
+    <color name="lastUpdateTimeText">#28a745</color>
+
+    <color name="confirmedText">#ff073a</color>
+    <color name="confirmedBackground">#ec869b</color>
+
+
+    <color name="activeText">#007bff</color>
+    <color name="activeBackground">#95c6fb</color>
+
+    <color name="recoveredText">#28a745</color>
+    <color name="recoveredBackground">#adefbc</color>
+
+    <color name="deceasedText">#6c757d</color>
+    <color name="deceasedBackground">#dde2e6</color>
+
+
 </resources>
