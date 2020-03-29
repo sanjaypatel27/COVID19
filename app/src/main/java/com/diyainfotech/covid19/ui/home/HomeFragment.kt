@@ -11,10 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.IndiaData
+import com.diyainfotech.covid19.api.india.StateWise
 import com.diyainfotech.covid19.util.Utils
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment()  {
 
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var stateWiseDataIndiaAdaptor: StateWiseDataIndiaAdaptor
@@ -45,7 +46,7 @@ class HomeFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         indiaStateWiseDataRecyclerview.layoutManager = linearLayoutManager
         stateWiseDataIndiaAdaptor = StateWiseDataIndiaAdaptor()
-        stateWiseDataIndiaAdaptor.stateList = indiaData.stateList
+        stateWiseDataIndiaAdaptor.stateList = indiaData.stateList.sortedByDescending { it.confirmed.toInt() }
         indiaStateWiseDataRecyclerview.adapter = stateWiseDataIndiaAdaptor
         lastUpdateTime?.text = indiaData.keyValueList[0].lastupdatedtime
 

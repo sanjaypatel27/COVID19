@@ -35,6 +35,8 @@ data class StateWiseDataResponse(
 
     @SerializedName("Maharashtra")
     val maharashtra: DistrictData,
+    @SerializedName("Karnataka")
+    val karnataka: DistrictData,
 
     @SerializedName("Punjab")
     val punjab: DistrictData,
@@ -127,7 +129,7 @@ data class DistrictData (
 }
 
 data class District (
-
+    var name: String,
     val confirmed: Long,
     val lastupdatedtime: String
 ) {
