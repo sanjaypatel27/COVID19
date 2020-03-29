@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.StateWise
 
-class StateWiseDataVIewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class StateWiseDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val txtStateName = itemView.findViewById(R.id.state_name) as TextView
     private val txtConfirmedCase = itemView.findViewById(R.id.txt_confirmed_case) as TextView
     private val txtActiveCase = itemView.findViewById(R.id.txt_active_case) as TextView
