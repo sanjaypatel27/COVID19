@@ -1,6 +1,7 @@
 package com.diyainfotech.covid19.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.IndiaData
+import com.diyainfotech.covid19.util.Utils
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -29,8 +31,13 @@ class HomeFragment : Fragment() {
 
     private fun subscribers() {
         homeViewModel.getIndiaAllData()
+        homeViewModel.getAllStateDataAsync()
         homeViewModel.indiaData.observe(this, Observer {
             setupRecyclerview(it!!)
+        })
+        homeViewModel.stateDistrictWise.observe(this, Observer {
+            Utils.showSuccessAlerter(context!!,"State Data fetch Success")
+            Log.d("SANJAY",it.toString())
         })
     }
 
