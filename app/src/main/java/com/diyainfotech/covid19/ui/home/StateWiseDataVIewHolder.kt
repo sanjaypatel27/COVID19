@@ -13,7 +13,11 @@ class StateWiseDataVIewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
     private val txtRecoveredCase = itemView.findViewById(R.id.txt_recovered_case) as TextView
     private val txtDeceasedCase = itemView.findViewById(R.id.txt_deceased_case) as TextView
     fun bindStateData(stateWise: StateWise){
-        txtStateName.text = stateWise.state
+        if(stateWise.state == "Total"){
+            txtStateName.text = "INDIA"
+        }else{
+            txtStateName.text = stateWise.state
+        }
         txtConfirmedCase.text = stateWise.confirmed
         txtActiveCase.text = stateWise.active
         txtRecoveredCase.text = stateWise.recovered

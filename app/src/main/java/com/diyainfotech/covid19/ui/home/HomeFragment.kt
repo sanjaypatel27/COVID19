@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.IndiaData
-import com.diyainfotech.covid19.util.Utils
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -31,17 +30,17 @@ class HomeFragment : Fragment() {
     private fun subscribers() {
         homeViewModel.getIndiaAllData()
         homeViewModel.indiaData.observe(this, Observer {
-            context?.let { it1 -> Utils.showSuccessAlerter(it1,"Data fetch Success") }
             setupRecyclerview(it!!)
         })
     }
 
     private fun setupRecyclerview(indiaData: IndiaData) {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        india_state_wise_data_recyclerview.layoutManager = linearLayoutManager
+        indiaStateWiseDataRecyclerview.layoutManager = linearLayoutManager
         stateWiseDataIndiaAdaptor = StateWiseDataIndiaAdaptor()
         stateWiseDataIndiaAdaptor.stateList = indiaData.stateList
-        india_state_wise_data_recyclerview.adapter = stateWiseDataIndiaAdaptor
+        indiaStateWiseDataRecyclerview.adapter = stateWiseDataIndiaAdaptor
+        lastUpdateTime?.text = indiaData.keyValueList[0].lastupdatedtime
 
     }
 }
