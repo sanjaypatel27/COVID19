@@ -10,6 +10,7 @@
     <color name="stateNameText">#6c757d</color>
     <color name="updateTimeText">#90f3a6</color>
     <color name="lastUpdateTimeText">#28a745</color>
+    <color name="districtName">#343A40</color>
 
     <color name="confirmedText">#ff073a</color>
     <color name="confirmedBackground">#ec869b</color>

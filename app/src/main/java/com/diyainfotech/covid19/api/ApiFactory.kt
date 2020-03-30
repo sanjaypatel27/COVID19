@@ -6,5 +6,5 @@ import com.diyainfotech.covid19.api.india.Covid19IndiaInterface
 
 object ApiFactory {
 
-    val indiaData : Covid19IndiaInterface = retrofit(httpClient).create(Covid19IndiaInterface::class.java)
+    val covid19IndiaData : Covid19IndiaInterface = retrofit(httpClient).create(Covid19IndiaInterface::class.java)
 }

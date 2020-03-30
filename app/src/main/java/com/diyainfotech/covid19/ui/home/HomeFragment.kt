@@ -1,6 +1,7 @@
 package com.diyainfotech.covid19.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.IndiaData
+import com.diyainfotech.covid19.api.india.StateWise
+import com.diyainfotech.covid19.util.Utils
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment()  {
 
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var stateWiseDataIndiaAdaptor: StateWiseDataIndiaAdaptor
@@ -29,8 +32,13 @@ class HomeFragment : Fragment() {
 
     private fun subscribers() {
         homeViewModel.getIndiaAllData()
+        homeViewModel.getAllStateDataAsync()
         homeViewModel.indiaData.observe(this, Observer {
             setupRecyclerview(it!!)
+        })
+        homeViewModel.stateDistrictWise.observe(this, Observer {
+            Utils.showSuccessAlerter(context!!,"State Data fetch Success")
+            Log.d("SANJAY",it.toString())
         })
     }
 
@@ -38,7 +46,7 @@ class HomeFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         indiaStateWiseDataRecyclerview.layoutManager = linearLayoutManager
         stateWiseDataIndiaAdaptor = StateWiseDataIndiaAdaptor()
-        stateWiseDataIndiaAdaptor.stateList = indiaData.stateList
+        stateWiseDataIndiaAdaptor.stateList = indiaData.stateList.sortedByDescending { it.confirmed.toInt() }
         indiaStateWiseDataRecyclerview.adapter = stateWiseDataIndiaAdaptor
         lastUpdateTime?.text = indiaData.keyValueList[0].lastupdatedtime
 
