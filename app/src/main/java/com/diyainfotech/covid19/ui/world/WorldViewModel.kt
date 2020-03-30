@@ -1,13 +1,23 @@
 package com.diyainfotech.covid19.ui.world
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.diyainfotech.covid19.api.world.WorldData
+import com.diyainfotech.covid19.api.world.WorldRepository
+import kotlinx.coroutines.launch
 
 class WorldViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val worldRepository = WorldRepository()
+    val worldData: MutableLiveData<WorldData?> by lazy {
+        MutableLiveData<WorldData?>()
     }
-    val text: LiveData<String> = _text
+
+    fun getWorldAllData() {
+        viewModelScope.launch {
+            worldData.value = worldRepository.getWorldAllData()
+            WorldServiceManager.worldData = worldData.value!!
+        }
+    }
 }

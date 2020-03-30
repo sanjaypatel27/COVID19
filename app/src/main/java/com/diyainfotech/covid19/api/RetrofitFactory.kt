@@ -2,6 +2,8 @@ package com.diyainfotech.covid19.api
 
 import com.diyainfotech.covid19.BuildConfig
 import com.diyainfotech.covid19.MyApplication
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
@@ -9,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+
 
 object RetrofitFactory {
 
@@ -18,6 +21,10 @@ object RetrofitFactory {
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
 
+    fun retrofit(httpClient: OkHttpClient.Builder): Retrofit = builder
+        .client(httpClient.build())
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
     val httpClient: OkHttpClient.Builder = getHttpClientDefaultConfig()
 
@@ -37,9 +44,16 @@ object RetrofitFactory {
         return httpClient
     }
 
-    fun retrofit(httpClient: OkHttpClient.Builder): Retrofit = builder
+    private val worldBuilder: Retrofit.Builder = Retrofit.Builder()
+        .baseUrl(EndPoints.COVID19_WORLD_BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+
+    fun worldRetrofit(httpClient: OkHttpClient.Builder): Retrofit = worldBuilder
         .client(httpClient.build())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+
+
 
 }
