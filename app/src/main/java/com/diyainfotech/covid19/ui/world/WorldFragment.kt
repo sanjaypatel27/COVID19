@@ -47,5 +47,8 @@ class WorldFragment : Fragment() {
         countryWiseDataForWorldAdaptor.areaList = worldData.areas
         worldDataRecyclerview.adapter = countryWiseDataForWorldAdaptor
         lastUpdateTime?.text = worldData.lastUpdated
+        txt_confirmed_case?.text = "${worldData.totalConfirmed}"
+        txt_recovered_case?.text =  "${worldData.totalRecovered}"
+        txt_deceased_case?.text =  "${worldData.totalDeaths}"
     }
 }
