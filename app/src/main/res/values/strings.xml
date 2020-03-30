@@ -4,15 +4,18 @@
     <string name="title_world">World</string>
     <string name="title_news">News</string>
 
+    <!--  INDIA  -->
     <string name="india">India</string>
     <string name="india_title">India COVID-19 Tracker</string>
     <string name="last_update">Last Updated</string>
-
     <string name="district">DISTRICT</string>
-
 
     <string name="confirmed">CONFIRMED</string>
     <string name="active">ACTIVE</string>
     <string name="recovered">RECOVERED</string>
     <string name="deceased">DECEASED</string>
+
+    <!--  World  -->
+    <string name="world_title">COVID-19 Tracker</string>
+
 </resources>
