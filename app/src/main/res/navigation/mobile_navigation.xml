@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_gujarat">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -22,4 +22,10 @@
         android:name="com.diyainfotech.covid19.ui.news.NewsFragment"
         android:label="@string/title_news"
         tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/navigation_gujarat"
+        android:name="com.diyainfotech.covid19.ui.news.GujaratFragment"
+        android:label="@string/title_gujarat"
+        tools:layout="@layout/fragment_webview" />
 </navigation>

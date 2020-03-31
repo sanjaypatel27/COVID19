@@ -2,18 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navigation_gujarat"
+        android:icon="@drawable/ic_gujarat_black"
+        android:title="@string/title_gujarat" />
+    <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
-
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_world_black"
         android:title="@string/title_world" />
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_news_black"
         android:title="@string/title_news" />
 
 </menu>
