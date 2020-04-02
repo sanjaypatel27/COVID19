@@ -44,8 +44,7 @@ class StateWiseDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
                 districtWiseDataAdaptor = DistrictWiseDataAdaptor()
                 linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
                 districtWiseDataRecyclerView.layoutManager = linearLayoutManager
-                districtWiseDataAdaptor.districtList =
-                    IndiaDataServiceManager.getDistrictListFromDistrictData(stateWise.state)
+                districtWiseDataAdaptor.districtList = IndiaDataServiceManager.getDistrictListFromDistrictData(stateWise.state)
                 districtWiseDataRecyclerView.adapter = districtWiseDataAdaptor
             } else {
                 districtLayout.visibility = View.GONE
