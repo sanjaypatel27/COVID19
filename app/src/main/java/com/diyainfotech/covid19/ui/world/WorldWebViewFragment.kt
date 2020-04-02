@@ -1,4 +1,4 @@
-package com.diyainfotech.covid19.ui.news
+package com.diyainfotech.covid19.ui.world
 
 import android.os.Bundle
 import android.view.*
@@ -12,7 +12,7 @@ import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.util.CustomWebView
 
 
-class GujaratFragment : Fragment() {
+class WorldWebViewFragment : Fragment() {
 
     lateinit var  customWebView :CustomWebView
     lateinit var  progressBar: ProgressBar
@@ -48,7 +48,7 @@ class GujaratFragment : Fragment() {
 
         customWebView.webViewClient = WebViewClient()
 
-        customWebView.loadUrl("https://gujcovid19.gujarat.gov.in/")
+        customWebView.loadUrl("https://www.worldometers.info/coronavirus/")
         customWebView.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView, newProgress: Int) {
                 super.onProgressChanged(view, newProgress)
@@ -61,6 +61,7 @@ class GujaratFragment : Fragment() {
                 }
             }
         }
+
         customWebView.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_BACK && event.action === MotionEvent.ACTION_UP && customWebView.canGoBack()
             ) {
@@ -69,6 +70,7 @@ class GujaratFragment : Fragment() {
             }
             false
         })
+
 
     }
 }
