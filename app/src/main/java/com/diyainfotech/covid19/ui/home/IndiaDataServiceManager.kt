@@ -37,6 +37,16 @@ object IndiaDataServiceManager {
             "Manipur" -> return stateDistrictWise!!.manipur
             "Mizoram" -> return stateDistrictWise!!.mizoram
             "Goa" -> return stateDistrictWise!!.goa
+            "Jharkhand" -> return stateDistrictWise!!.jharkhand
+            "Assam" -> return stateDistrictWise!!.assam
+            "Tripura" -> return stateDistrictWise!!.tripura
+            "Sikkim" -> return stateDistrictWise!!.sikkim
+            "Nagaland" -> return stateDistrictWise!!.nagaland
+            "Meghalaya" -> return stateDistrictWise!!.meghalaya
+            "Lakshadweep" -> return stateDistrictWise!!.lakshadweep
+            "Daman and Diu" -> return stateDistrictWise!!.damanAndDiu
+            "Dadra and Nagar Haveli" -> return stateDistrictWise!!.dadraAndNagarHaveli
+            "Arunachal Pradesh" -> return stateDistrictWise!!.arunachalPradesh
             "Andaman and Nicobar Islands" -> return stateDistrictWise!!.andamanAndNicobarIslands
             else -> return stateDistrictWise!!.unknown
         }
@@ -45,10 +55,13 @@ object IndiaDataServiceManager {
     fun getDistrictListFromDistrictData(stateName: String): List<District> {
         val districtData = getDistrictDataBasedOnString(stateName)
         val districtList: MutableList<District> = ArrayList()
-        for ((districtName, district) in districtData.districtData) {
-            district.name = districtName
-            districtList.add(district)
+        if(districtData != null) {
+            for ((districtName, district) in districtData.districtData) {
+                district.name = districtName
+                districtList.add(district)
+            }
+            return districtList.sortedBy { it.name }
         }
-        return districtList.sortedBy { it.name}
+        return districtList
     }
 }
