@@ -32,9 +32,9 @@ data class StateWiseDataResponse(
     @SerializedName("Jammu and Kashmir")
     val jammuAndKashmir: DistrictData,
 
-
     @SerializedName("Maharashtra")
     val maharashtra: DistrictData,
+
     @SerializedName("Karnataka")
     val karnataka: DistrictData,
 
@@ -83,57 +83,49 @@ data class StateWiseDataResponse(
     @SerializedName("Goa")
     val goa: DistrictData,
 
+    @SerializedName("Jharkhand")
+    val jharkhand: DistrictData,
+
+    @SerializedName("Assam")
+    val assam: DistrictData,
+    @SerializedName("Tripura")
+    val tripura: DistrictData,
+
+    @SerializedName("Sikkim")
+    val sikkim: DistrictData,
+
+    @SerializedName("Nagaland")
+    val nagaland: DistrictData,
+
+    @SerializedName("Meghalaya")
+    val meghalaya: DistrictData,
+
+    @SerializedName("Lakshadweep")
+    val lakshadweep: DistrictData,
+
+    @SerializedName("Daman and Diu")
+    val damanAndDiu: DistrictData,
+
+    @SerializedName("Dadra and Nagar Haveli")
+    val dadraAndNagarHaveli: DistrictData,
+
+    @SerializedName("Arunachal Pradesh")
+    val arunachalPradesh: DistrictData,
+
     @SerializedName("Andaman and Nicobar Islands")
     val andamanAndNicobarIslands: DistrictData,
 
     @SerializedName("Unknown")
     val unknown: DistrictData
-) {
-    override fun toString(): String {
-        return "StateWiseDataResponse(" +
-                "\nkerala=$kerala," +
-                " \ndelhi=$delhi," +
-                " \ntelangana=$telangana, " +
-                "\nrajasthan=$rajasthan," +
-                " \nharyana=$haryana," +
-                " \nuttarPradesh=$uttarPradesh, " +
-                "\nladakh=$ladakh," +
-                " \ntamilNadu=$tamilNadu," +
-                " \njammuAndKashmir=$jammuAndKashmir," +
-                "\nmaharashtra=$maharashtra, " +
-                "\npunjab=$punjab," +
-                " \nandhraPradesh=$andhraPradesh," +
-                "\nuttarakhand=$uttarakhand," +
-                " \nodisha=$odisha, " +
-                "\npuducherry=$puducherry, " +
-                "\nwestBengal=$westBengal, " +
-                "\nchandigarh=$chandigarh, " +
-                "\nchhattisgarh=$chhattisgarh, " +
-                "\ngujarat=$gujarat," +
-                " \nhimachalPradesh=$himachalPradesh, " +
-                "\nmadhyaPradesh=$madhyaPradesh," +
-                " \nbihar=$bihar, \nmanipur=$manipur, " +
-                "\nmizoram=$mizoram," +
-                " \ngoa=$goa," +
-                " \nandamanAndNicobarIslands=$andamanAndNicobarIslands," +
-                "\nunknown=$unknown)"
-    }
-}
-data class DistrictData (
+)
+
+data class DistrictData(
 
     val districtData: Map<String, District>
-) {
-    override fun toString(): String {
-        return "\n{districtData=$districtData)"
-    }
-}
+)
 
-data class District (
+data class District(
     var name: String,
     val confirmed: Long,
     val lastupdatedtime: String
-) {
-    override fun toString(): String {
-        return "\n{District(\nconfirmed=$confirmed, \nlastupdatedtime='$lastupdatedtime')"
-    }
-}
+)

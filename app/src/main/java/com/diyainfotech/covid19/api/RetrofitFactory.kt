@@ -1,11 +1,7 @@
 package com.diyainfotech.covid19.api
 
 import com.diyainfotech.covid19.BuildConfig
-import com.diyainfotech.covid19.MyApplication
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -34,7 +30,6 @@ object RetrofitFactory {
         if (BuildConfig.DEBUG) {
             logging.level = HttpLoggingInterceptor.Level.BODY
             httpClient.addInterceptor(logging)
-            httpClient.addInterceptor(ChuckInterceptor(MyApplication.getApplication()))
         }
 
         httpClient.connectTimeout(30, TimeUnit.SECONDS)
