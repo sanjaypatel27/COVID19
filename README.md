@@ -6,3 +6,7 @@ Special Thanks to : https://www.covid19india.org/ & https://bing.com/covid for p
 API Collection for Postman can be found on this  website 
 
 https://documenter.getpostman.com/view/10906243/SzYXXerv?version=latest
+
+Download APK : https://github.com/sanjaypatel27/COVID19/releases
+
+
