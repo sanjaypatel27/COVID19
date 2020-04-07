@@ -7,5 +7,7 @@ data  class StateWise (
     var lastupdatedtime : String,
     var recovered : String,
     var state : String,
-    var delta: Delta
+    var deltaconfirmed : String,
+    var deltadeaths : String,
+    var deltarecovered : String
 )
