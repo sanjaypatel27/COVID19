@@ -21,20 +21,21 @@ class IndiaDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.findViewById(R.id.txt_deceased_case_delta) as TextView
 
     fun bindIndiaData(stateWise: StateWise) {
-        val keyValues = IndiaDataServiceManager.indiaData!!.keyValueList[0]
+        val stateWise = IndiaDataServiceManager.indiaData!!.stateList[0]
         txtConfirmedCase.text = stateWise.confirmed
         txtActiveCase.text = stateWise.active
         txtRecoveredCase.text = stateWise.recovered
         txtDeceasedCase.text = stateWise.deaths
-        keyValues.let {
-            if (keyValues.confirmeddelta.toInt() > 0) {
-                txtConfirmedCaseDelta.text = "[+${keyValues.confirmeddelta}]"
+
+        stateWise.let {
+            if (stateWise.confirmed.toInt() > 0) {
+                txtConfirmedCaseDelta.text = "[+${stateWise.deltaconfirmed}]"
             }
-            if (keyValues.recovereddelta.toInt() > 0) {
-                txtRecoveredCaseDelta.text = "[+${keyValues.recovereddelta}]"
+            if (stateWise.recovered.toInt() > 0) {
+                txtRecoveredCaseDelta.text = "[+${stateWise.deltarecovered}]"
             }
-            if (keyValues.deceaseddelta.toInt() > 0) {
-                txtDeceasedCaseDelta.text = "[+${keyValues.deceaseddelta}]"
+            if (stateWise.deaths.toInt() > 0) {
+                txtDeceasedCaseDelta.text = "[+${stateWise.deltadeaths}]"
             }
         }
     }

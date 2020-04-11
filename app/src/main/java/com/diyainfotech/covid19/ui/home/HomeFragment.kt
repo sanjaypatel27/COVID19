@@ -44,7 +44,7 @@ class HomeFragment : Fragment()  {
         stateWiseDataIndiaAdaptor = StateWiseDataIndiaAdaptor()
         stateWiseDataIndiaAdaptor.stateList = indiaData.stateList.sortedByDescending { it.confirmed.toInt() }
         indiaStateWiseDataRecyclerview.adapter = stateWiseDataIndiaAdaptor
-        lastUpdateTime?.text = indiaData.keyValueList[0].lastupdatedtime
+        lastUpdateTime?.text = indiaData.stateList[0].lastupdatedtime
 
     }
 }
