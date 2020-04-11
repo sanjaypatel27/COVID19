@@ -34,8 +34,8 @@ class StateWiseDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
         txtRecoveredCase.text = stateWise.recovered
         txtDeceasedCase.text = stateWise.deaths
 
-        if(stateWise.delta.active > 0) {
-            txtConfirmedCaseDelta.text = "↑${stateWise.delta.active}"
+        if(stateWise.deltaconfirmed.toInt() > 0) {
+            txtConfirmedCaseDelta.text = "↑${stateWise.deltaconfirmed}"
         }
 
         stateCellCard.setOnClickListener(View.OnClickListener {
