@@ -6,20 +6,21 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.util.CustomWebView
 
 
 class WorldWebViewFragment : Fragment() {
 
-    lateinit var  customWebView :CustomWebView
-    lateinit var  progressBar: ProgressBar
+    lateinit var customWebView: CustomWebView
+    lateinit var swipeRefresh: SwipeRefreshLayout
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_webview, container, false)
     }
@@ -27,7 +28,8 @@ class WorldWebViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         customWebView = view.findViewById(R.id.gujaratWebView)
-        progressBar = view.findViewById(R.id.progressBar)
+        swipeRefresh = view.findViewById(R.id.swipeRefresh)
+        swipeRefresh.setColorSchemeResources(R.color.colorAccent)
 
         customWebView.settings.javaScriptEnabled = true
         customWebView.settings.setSupportZoom(true)
@@ -42,7 +44,7 @@ class WorldWebViewFragment : Fragment() {
         customWebView.isVerticalScrollBarEnabled = false
         customWebView.settings.setGeolocationEnabled(true)
         customWebView.settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
-        customWebView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+        customWebView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         customWebView.settings.setAppCacheEnabled(true)
         customWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
 
@@ -53,24 +55,29 @@ class WorldWebViewFragment : Fragment() {
             override fun onProgressChanged(view: WebView, newProgress: Int) {
                 super.onProgressChanged(view, newProgress)
                 if (newProgress < 100) {
-                    progressBar.progress =newProgress
-                    progressBar.visibility = View.VISIBLE
+                    swipeRefresh.isRefreshing = true
                 }
                 if (newProgress == 100) {
-                    progressBar.visibility = View.GONE
+                    swipeRefresh.isRefreshing = false
                 }
             }
         }
 
-        customWebView.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_BACK && event.action === MotionEvent.ACTION_UP && customWebView.canGoBack()
+        customWebView.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_BACK && customWebView.canGoBack()
             ) {
                 customWebView.goBack()
                 return@OnKeyListener true
             }
             false
         })
+        swipeRefresh.setOnRefreshListener(OnRefreshListener
+        {
+            loadUrl()
+        })
+    }
 
-
+    private fun loadUrl() {
+        customWebView.loadUrl("https://www.worldometers.info/coronavirus/")
     }
 }
