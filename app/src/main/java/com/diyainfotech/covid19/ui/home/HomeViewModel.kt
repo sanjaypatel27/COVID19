@@ -24,6 +24,7 @@ class HomeViewModel : ViewModel() {
         viewModelScope.launch {
             indiaData.value = indiaRepository.getIndiaAllData()
             IndiaDataServiceManager.indiaData = indiaData.value!!
+
         }
     }
 
