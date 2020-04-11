@@ -42,7 +42,7 @@ class WorldWebViewFragment : Fragment() {
         customWebView.isVerticalScrollBarEnabled = false
         customWebView.settings.setGeolocationEnabled(true)
         customWebView.settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
-        customWebView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
+        customWebView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
         customWebView.settings.setAppCacheEnabled(true)
         customWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
 
