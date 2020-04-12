@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
                 android:layout_weight="0.3"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:ellipsize="end" />
         </LinearLayout>
     </RelativeLayout>
