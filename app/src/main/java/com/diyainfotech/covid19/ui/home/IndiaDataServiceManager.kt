@@ -6,8 +6,8 @@ import com.diyainfotech.covid19.api.india.IndiaData
 import com.diyainfotech.covid19.api.india.StateWiseDataResponse
 
 object IndiaDataServiceManager {
-    lateinit  var indiaData: IndiaData
-    lateinit var stateDistrictWise: StateWiseDataResponse
+    var indiaData: IndiaData? = null
+    var stateDistrictWise: StateWiseDataResponse? = null
 
     private fun getDistrictDataBasedOnString(stateName: String): DistrictData {
         when (stateName) {
