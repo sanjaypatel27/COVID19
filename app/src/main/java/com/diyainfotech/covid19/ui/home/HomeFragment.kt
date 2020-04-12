@@ -50,26 +50,36 @@ class HomeFragment : Fragment() {
 
     private fun loadData(isReload: Boolean) {
         swipeRefresh.isRefreshing = true
-        homeViewModel.getIndiaAllData()
-        homeViewModel.getAllStateDataAsync()
+
         if (isReload) {
             stateWiseDataIndiaAdaptor.stateList = emptyList()
             stateWiseDataIndiaAdaptor.notifyDataSetChanged()
+            homeViewModel.getIndiaAllData()
+            homeViewModel.getAllStateDataAsync()
+        } else {
+            if (IndiaDataServiceManager.indiaData == null) {
+                homeViewModel.getIndiaAllData()
+                homeViewModel.getAllStateDataAsync()
+            } else {
+                setupRecyclerview(IndiaDataServiceManager.indiaData!!)
+            }
         }
     }
 
     private fun subscribers() {
         loadData(false)
         homeViewModel.indiaData.observe(viewLifecycleOwner, Observer {
-            swipeRefresh.isRefreshing = false
+            IndiaDataServiceManager.indiaData = it!!
             setupRecyclerview(it!!)
         })
         homeViewModel.stateDistrictWise.observe(viewLifecycleOwner, Observer {
+            IndiaDataServiceManager.stateDistrictWise = it!!
             stateWiseDataIndiaAdaptor.notifyDataSetChanged()
         })
     }
 
     private fun setupRecyclerview(indiaData: IndiaData) {
+        swipeRefresh.isRefreshing = false
         stateWiseDataIndiaAdaptor = StateWiseDataIndiaAdaptor()
         stateWiseDataIndiaAdaptor.stateList =
             indiaData.stateList.sortedByDescending { it.confirmed.toInt() }
