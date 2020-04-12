@@ -10,7 +10,7 @@ import com.diyainfotech.covid19.extensions.autoNotify
 import com.diyainfotech.covid19.extensions.inflate
 import kotlin.properties.Delegates
 
-class CountryWiseDataForWorldAdaptor() : RecyclerView.Adapter<CountryDataViewHolder>() {
+class CountryWiseDataForWorldAdaptor : RecyclerView.Adapter<CountryDataViewHolder>() {
 
     var areaList: List<Area> by Delegates.observable(emptyList()) { _, old, new ->
         autoNotify(old, new) { o, n -> o.id == n.id }
