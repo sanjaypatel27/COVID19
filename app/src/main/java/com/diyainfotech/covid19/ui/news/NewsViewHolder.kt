@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
+import com.diyainfotech.covid19.Constant
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.rssFeedParser.Article
 import com.diyainfotech.covid19.util.TimeDiffUtil
@@ -31,7 +32,7 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
             description.text = (HtmlCompat.fromHtml(article.description!!, 0))
         }
         source.text = article.link
-        publishDate.text = TimeDiffUtil.getLastUpdateTime(article.pubDate!!)
+        publishDate.text = TimeDiffUtil.getLastUpdateTime(article.pubDate!!,Constant.newsLastUpdatedDateTimeZoneFormat)
         if (article.image != null) {
             articleImage.load(article.image)
         }

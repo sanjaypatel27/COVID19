@@ -8,4 +8,6 @@ object Constant {
     const val dateFormat = "dd/MM//dd HH:mm:ss"
     const val gujaratWebViewUrl = "https://gujcovid19.gujarat.gov.in/"
     const val worldWebViewUrl = "https://www.worldometers.info/coronavirus/"
+    const val newsLastUpdatedDateTimeZoneFormat = "EEE, d MMM yyyy HH:mm:ss Z"
+    const val IndiaApiLastUpdatedDateTimeZoneFormat = "dd/MM/yy HH:mm:ss"
 }
