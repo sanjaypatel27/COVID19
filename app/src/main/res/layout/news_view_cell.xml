@@ -13,24 +13,47 @@
         <ImageView
             android:id="@+id/articleImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"/>
+            android:layout_height="200sp"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/title"
             style="@style/Title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            android:layout_below="@id/articleImage" />
+            android:layout_below="@id/articleImage"
+            android:layout_margin="10sp" />
 
         <TextView
             android:id="@+id/description"
             style="@style/SubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/title"
             android:layout_margin="10sp"
-            android:layout_below="@id/title" />
+            android:maxLines="5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description"
+            android:layout_margin="10sp">
+
+            <TextView
+                android:id="@+id/source"
+                style="@style/Footnote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/publishDate"
+                style="@style/Footnote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
