@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
             android:layout_margin="10sp"
+            android:ellipsize="end"
             android:maxLines="5" />
 
         <RelativeLayout

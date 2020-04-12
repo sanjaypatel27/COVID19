@@ -1,11 +1,7 @@
 package com.diyainfotech.covid19.ui.news
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.diyainfotech.covid19.api.world.WorldData
-import com.diyainfotech.covid19.rssFeedParser.Article
 import com.diyainfotech.covid19.rssFeedParser.Channel
 import com.diyainfotech.covid19.rssFeedParser.Parser
 import kotlinx.coroutines.CoroutineScope
@@ -16,7 +12,7 @@ import java.lang.Exception
 
 class NewsViewModel : ViewModel() {
 
-    private val newsUrl = "https://rss.app/feeds/W3wDBmrAapsgguPK.xml"
+    private val newsUrl = "https://rss.app/feeds/c6bsnlH5l5iS0bAI.xml"
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private lateinit var articleListLive: MutableLiveData<Channel>

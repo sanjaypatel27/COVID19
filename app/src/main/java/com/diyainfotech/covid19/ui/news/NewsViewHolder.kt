@@ -3,6 +3,7 @@ package com.diyainfotech.covid19.ui.news
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.diyainfotech.covid19.R
@@ -17,9 +18,11 @@ class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindData(article: Article) {
         title.text = article.title
-        description.text = article.description
-        source.text = article.sourceUrl
-      //  publishDate.text = article.pubDate
+        if (article.description != null) {
+            description.text = (HtmlCompat.fromHtml(article.description!!, 0))
+        }
+        source.text = article.link
+        //  publishDate.text = article.pubDate
         if (article.image != null) {
             articleImage.load(article.image)
         }
