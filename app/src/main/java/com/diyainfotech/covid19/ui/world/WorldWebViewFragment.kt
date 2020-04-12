@@ -9,7 +9,9 @@ import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
+import com.diyainfotech.covid19.Constant
 import com.diyainfotech.covid19.R
+import com.diyainfotech.covid19.ui.util.WebViewUtil
 import com.diyainfotech.covid19.util.CustomWebView
 
 
@@ -27,50 +29,11 @@ class WorldWebViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        customWebView = view.findViewById(R.id.gujaratWebView)
+        customWebView = view.findViewById(R.id.customWebView)
         swipeRefresh = view.findViewById(R.id.swipeRefresh)
         swipeRefresh.setColorSchemeResources(R.color.colorAccent)
-
-        customWebView.settings.javaScriptEnabled = true
-        customWebView.settings.setSupportZoom(true)
-        customWebView.settings.builtInZoomControls = true
-        customWebView.settings.displayZoomControls = false
-        customWebView.settings.useWideViewPort = true
-        customWebView.settings.loadWithOverviewMode = true
-        customWebView.settings.domStorageEnabled = true
-        customWebView.settings.javaScriptCanOpenWindowsAutomatically = true
-        customWebView.settings.setRenderPriority(WebSettings.RenderPriority.HIGH)
-        customWebView.isScrollbarFadingEnabled = false
-        customWebView.isVerticalScrollBarEnabled = false
-        customWebView.settings.setGeolocationEnabled(true)
-        customWebView.settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
-        customWebView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
-        customWebView.settings.setAppCacheEnabled(true)
-        customWebView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
-
-        customWebView.webViewClient = WebViewClient()
-
-        customWebView.loadUrl("https://www.worldometers.info/coronavirus/")
-        customWebView.webChromeClient = object : WebChromeClient() {
-            override fun onProgressChanged(view: WebView, newProgress: Int) {
-                super.onProgressChanged(view, newProgress)
-                if (newProgress < 100) {
-                    swipeRefresh.isRefreshing = true
-                }
-                if (newProgress == 100) {
-                    swipeRefresh.isRefreshing = false
-                }
-            }
-        }
-
-        customWebView.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
-            if (keyCode == KeyEvent.KEYCODE_BACK && customWebView.canGoBack()
-            ) {
-                customWebView.goBack()
-                return@OnKeyListener true
-            }
-            false
-        })
+        WebViewUtil.setUpWebView(customWebView, swipeRefresh)
+        loadUrl()
         swipeRefresh.setOnRefreshListener(OnRefreshListener
         {
             loadUrl()
@@ -78,6 +41,6 @@ class WorldWebViewFragment : Fragment() {
     }
 
     private fun loadUrl() {
-        customWebView.loadUrl("https://www.worldometers.info/coronavirus/")
+        WebViewUtil.loadUrlIntoWebView(Constant.worldWebViewUrl, customWebView)
     }
 }

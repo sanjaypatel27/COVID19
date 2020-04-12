@@ -8,14 +8,14 @@ import com.diyainfotech.covid19.extensions.inflate
 import com.diyainfotech.covid19.rssFeedParser.Article
 import kotlin.properties.Delegates
 
-class NewsAdaptor : RecyclerView.Adapter<NewsViewHolder>() {
+class NewsAdaptor(private val onNewsCardClickListener: OnNewsCardClickListener) : RecyclerView.Adapter<NewsViewHolder>() {
     var articleList: List<Article> by Delegates.observable(emptyList()) { _, old, new ->
         autoNotify(old, new) { o, n -> o.title == n.title }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val inflatedView = parent.inflate(R.layout.news_view_cell, false)
-        return NewsViewHolder(inflatedView)
+        return NewsViewHolder(inflatedView,onNewsCardClickListener)
     }
 
     override fun getItemCount(): Int {

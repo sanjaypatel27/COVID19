@@ -25,6 +25,12 @@
     <color name="deceasedText">#6c757d</color>
     <color name="deceasedBackground">#dde2e6</color>
 
+    <!--  News -->
+    <color name="Title1Color">#065fd4</color>
+    <color name="SubTitleColor">#000000</color>
+    <color name="FootnoteColor">#6c757d</color>
+    <color name="linkColor">#0000EE</color>
+
 
 
 

@@ -28,4 +28,6 @@
         android:name="com.diyainfotech.covid19.ui.news.GujaratFragment"
         android:label="@string/title_gujarat"
         tools:layout="@layout/fragment_webview" />
+
 </navigation>
+
