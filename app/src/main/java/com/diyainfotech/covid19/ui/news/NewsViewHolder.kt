@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.rssFeedParser.Article
+import com.diyainfotech.covid19.util.TimeDiffUtil
 
 class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNewsCardClickListener) :
     RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -30,7 +31,7 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
             description.text = (HtmlCompat.fromHtml(article.description!!, 0))
         }
         source.text = article.link
-        publishDate.text = article.pubDate
+        publishDate.text = TimeDiffUtil.getLastUpdateTime(article.pubDate!!)
         if (article.image != null) {
             articleImage.load(article.image)
         }
