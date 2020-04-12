@@ -23,15 +23,13 @@ class HomeViewModel : ViewModel() {
     fun getIndiaAllData(){
         viewModelScope.launch {
             indiaData.value = indiaRepository.getIndiaAllData()
-            IndiaDataServiceManager.indiaData = indiaData.value!!
-
         }
     }
 
     fun getAllStateDataAsync(){
         viewModelScope.launch {
             stateDistrictWise.value = indiaRepository.getAllStateDataAsync()
-            IndiaDataServiceManager.stateDistrictWise = stateDistrictWise.value!!
+
         }
     }
 
