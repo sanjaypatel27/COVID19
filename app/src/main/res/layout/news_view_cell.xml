@@ -19,13 +19,13 @@
             <ImageView
                 android:id="@+id/articleImage"
                 android:layout_width="match_parent"
-                android:layout_height="200sp"
+                android:layout_height="250sp"
                 android:scaleType="centerCrop"
                 android:visibility="gone" />
-            <com.google.android.youtube.player.YouTubeThumbnailView
-                android:id="@+id/youTubeThumbnailView"
+            <com.diyainfotech.covid19.util.CustomWebView
+                android:id="@+id/customWebView"
                 android:layout_width="match_parent"
-                android:layout_height="200sp" />
+                android:layout_height="250sp" />
 
         </RelativeLayout>
 

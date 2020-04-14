@@ -11,16 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.api.loadAny
 import com.diyainfotech.covid19.Constant
-import com.diyainfotech.covid19.DeveloperKey
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.rssFeedParser.Article
+import com.diyainfotech.covid19.ui.util.WebViewUtil
+import com.diyainfotech.covid19.util.CustomWebView
 import com.diyainfotech.covid19.util.TimeDiffUtil
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubeThumbnailLoader
-import com.google.android.youtube.player.YouTubeThumbnailView
 
 class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNewsCardClickListener) :
-    RecyclerView.ViewHolder(itemView), View.OnClickListener, YouTubeThumbnailView.OnInitializedListener , YouTubeThumbnailLoader.OnThumbnailLoadedListener {
+    RecyclerView.ViewHolder(itemView), View.OnClickListener {
     private val newsCard = itemView.findViewById(R.id.newsCard) as CardView
     private val title = itemView.findViewById(R.id.title) as TextView
     private val description = itemView.findViewById(R.id.description) as TextView
@@ -28,9 +26,8 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
     private val publishDate = itemView.findViewById(R.id.publishDate) as TextView
     private val articleImage = itemView.findViewById(R.id.articleImage) as ImageView
     private val sourceFavicon = itemView.findViewById(R.id.sourceFavicon) as ImageView
-    private val youTubeThumbnailView =
-        itemView.findViewById(R.id.youTubeThumbnailView) as YouTubeThumbnailView
-    private lateinit var youTubeThumbnailLoader : YouTubeThumbnailLoader
+    private val customWebView =
+        itemView.findViewById(R.id.customWebView) as CustomWebView
     private lateinit var article: Article
 
 
@@ -53,11 +50,14 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
             sourceFavicon.loadAny(Constant.getFaviconFromSiteURL + article.link)
             if (article.link!!.contains("youtube")) {
                 articleImage.visibility = View.GONE
-                youTubeThumbnailView.visibility = View.GONE
-                youTubeThumbnailView.initialize(DeveloperKey.DEVELOPER_KEY, this)
+                customWebView.visibility = View.VISIBLE
+                WebViewUtil.webViewUrl = article.link!!
+                WebViewUtil.setUpWebView(customWebView,null)
+                var videoId = article.link!!.split("v=")[1]
+                WebViewUtil.loadDataWebView(WebViewUtil.getStringForEmbedWebView(videoId),customWebView)
             } else {
                 articleImage.visibility = View.VISIBLE
-                youTubeThumbnailView.visibility = View.GONE
+                customWebView.visibility = View.GONE
                 if (!TextUtils.isEmpty(article.image)) {
                     articleImage.load(article.image)
                 }
@@ -78,28 +78,4 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
         }
     }
 
-    override fun onInitializationSuccess(p0: YouTubeThumbnailView?, p1: YouTubeThumbnailLoader?) {
-        if (p1 != null) {
-            youTubeThumbnailLoader = p1
-            youTubeThumbnailLoader.setOnThumbnailLoadedListener(this)
-            var videoId = article.link!!.split("v=")[1]
-            youTubeThumbnailLoader.setVideo(videoId)
-        }
-    }
-
-    override fun onInitializationFailure(
-        p0: YouTubeThumbnailView?,
-        p1: YouTubeInitializationResult?
-    ) {
-    }
-
-    override fun onThumbnailLoaded(p0: YouTubeThumbnailView?, p1: String?) {
-        youTubeThumbnailView.visibility = View.VISIBLE
-    }
-
-    override fun onThumbnailError(
-        p0: YouTubeThumbnailView?,
-        p1: YouTubeThumbnailLoader.ErrorReason?
-    ) {
-    }
 }
