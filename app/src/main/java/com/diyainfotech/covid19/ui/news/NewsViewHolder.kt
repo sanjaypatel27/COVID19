@@ -1,5 +1,6 @@
 package com.diyainfotech.covid19.ui.news
 
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -12,6 +13,8 @@ import coil.api.loadAny
 import com.diyainfotech.covid19.Constant
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.rssFeedParser.Article
+import com.diyainfotech.covid19.ui.util.WebViewUtil
+import com.diyainfotech.covid19.util.CustomWebView
 import com.diyainfotech.covid19.util.TimeDiffUtil
 
 class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNewsCardClickListener) :
@@ -23,6 +26,8 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
     private val publishDate = itemView.findViewById(R.id.publishDate) as TextView
     private val articleImage = itemView.findViewById(R.id.articleImage) as ImageView
     private val sourceFavicon = itemView.findViewById(R.id.sourceFavicon) as ImageView
+    private val customWebView =
+        itemView.findViewById(R.id.customWebView) as CustomWebView
     private lateinit var article: Article
 
 
@@ -40,15 +45,27 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
             article.pubDate!!,
             Constant.newsLastUpdatedDateTimeZoneFormat
         )
-        if (article.image != null) {
-            articleImage.load(article.image)
-        }
-        if (article.link != null) {
-            sourceFavicon.loadAny(Constant.getFaviconFromSiteURL + article.link){
+
+        if (!TextUtils.isEmpty(article.link)) {
+            sourceFavicon.loadAny(Constant.getFaviconFromSiteURL + article.link)
+            if (article.link!!.contains("youtube")) {
+                articleImage.visibility = View.GONE
+                customWebView.visibility = View.VISIBLE
+                WebViewUtil.webViewUrl = article.link!!
+                WebViewUtil.setUpWebView(customWebView,null)
+                var videoId = article.link!!.split("v=")[1]
+                WebViewUtil.loadDataWebView(WebViewUtil.getStringForEmbedWebView(videoId),customWebView)
+            } else {
+                articleImage.visibility = View.VISIBLE
+                customWebView.visibility = View.GONE
+                if (!TextUtils.isEmpty(article.image)) {
+                    articleImage.load(article.image)
+                }
             }
         }
 
     }
+
 
     override fun onClick(v: View?) {
         when {
@@ -60,4 +77,5 @@ class NewsViewHolder(itemView: View, private val onNewsCardClickListener: OnNews
             }
         }
     }
+
 }

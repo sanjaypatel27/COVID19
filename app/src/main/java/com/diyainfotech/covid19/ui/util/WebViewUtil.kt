@@ -58,5 +58,11 @@ object WebViewUtil {
     fun loadUrlIntoWebView( webViewUrl:String,customWebView: CustomWebView){
         customWebView.loadUrl(webViewUrl)
     }
+    fun loadDataWebView( webViewUrl:String,customWebView: CustomWebView){
+        customWebView.loadData(webViewUrl, "text/html" , "utf-8")
+    }
+    fun getStringForEmbedWebView(videoId:String):String{
+        return "<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/$videoId\" frameborder=\"0\" allowfullscreen></iframe>"
+    }
 
 }
