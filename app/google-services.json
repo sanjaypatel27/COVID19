@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "936215206258",
+    "firebase_url": "https://covid19-227c3.firebaseio.com",
+    "project_id": "covid19-227c3",
+    "storage_bucket": "covid19-227c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936215206258:android:7dad57c47289f9686025eb",
+        "android_client_info": {
+          "package_name": "com.diyainfotech.covid19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936215206258-at58ti2i47mlk8h7pihor1kvktb202ed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD546ZPrY4LLbfqJI4cl6hLJq_xNSEgu9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936215206258-at58ti2i47mlk8h7pihor1kvktb202ed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

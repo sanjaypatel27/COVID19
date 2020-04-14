@@ -10,4 +10,5 @@ object Constant {
     const val worldWebViewUrl = "https://www.worldometers.info/coronavirus/"
     const val newsLastUpdatedDateTimeZoneFormat = "EEE, d MMM yyyy HH:mm:ss Z"
     const val IndiaApiLastUpdatedDateTimeZoneFormat = "dd/MM/yy HH:mm:ss"
+    const val getFaviconFromSiteURL = "https://s2.googleusercontent.com/s2/favicons?domain="
 }

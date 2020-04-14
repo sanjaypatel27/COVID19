@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/newsCard"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/newsCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10sp"
@@ -11,18 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/articleImage"
+        <RelativeLayout
+            android:id="@+id/mediaLayout"
             android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:scaleType="centerCrop" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/articleImage"
+                android:layout_width="match_parent"
+                android:layout_height="250sp"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+            <com.diyainfotech.covid19.util.CustomWebView
+                android:id="@+id/customWebView"
+                android:layout_width="match_parent"
+                android:layout_height="250sp" />
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/title"
             style="@style/Title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/articleImage"
+            android:layout_below="@id/mediaLayout"
             android:layout_margin="10sp" />
 
         <TextView
@@ -40,16 +53,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/description"
             android:layout_margin="10sp"
+            android:gravity="center"
             android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/sourceFavicon"
+                android:layout_width="16sp"
+                android:layout_height="16sp" />
 
             <TextView
                 android:id="@+id/source"
                 style="@style/Footnote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.7"
+                android:layout_weight="0.6"
                 android:ellipsize="end"
-                android:maxLines="2"
+                android:gravity="center"
+                android:maxLines="1"
                 android:textColor="@color/linkColor" />
 
             <TextView
@@ -58,9 +78,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5sp"
-                android:layout_weight="0.3"
-                android:maxLines="2"
-                android:ellipsize="end" />
+                android:layout_weight="0.4"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="viewEnd" />
         </LinearLayout>
     </RelativeLayout>
 
