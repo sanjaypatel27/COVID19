@@ -11,18 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/articleImage"
+        <RelativeLayout
+            android:id="@+id/mediaLayout"
             android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:scaleType="centerCrop" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/articleImage"
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+            <com.google.android.youtube.player.YouTubeThumbnailView
+                android:id="@+id/youTubeThumbnailView"
+                android:layout_width="match_parent"
+                android:layout_height="200sp" />
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/title"
             style="@style/Title1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/articleImage"
+            android:layout_below="@id/mediaLayout"
             android:layout_margin="10sp" />
 
         <TextView
@@ -46,8 +59,7 @@
             <ImageView
                 android:id="@+id/sourceFavicon"
                 android:layout_width="16sp"
-                android:layout_height="16sp"
-               />
+                android:layout_height="16sp" />
 
             <TextView
                 android:id="@+id/source"
