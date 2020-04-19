@@ -74,13 +74,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.3.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
     implementation 'io.coil-kt:coil:0.9.5'
-
-    //Alerter Library to show Alert message .
-    implementation 'com.tapadoo.android:alerter:2.0.6'
-
-    //Library For Recyclerview Adaptor Use in Menu , product Customizer
-    implementation 'eu.davidea:flexible-adapter:5.1.0'
-
+    
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
