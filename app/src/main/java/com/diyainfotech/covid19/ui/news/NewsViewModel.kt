@@ -12,7 +12,7 @@ import java.lang.Exception
 
 class NewsViewModel : ViewModel() {
 
-    private val newsUrl = "https://rss.app/feeds/c6bsnlH5l5iS0bAI.xml"
+    private val newsUrl = "https://www.bhaskar.com/rss-feed/1061/"
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private lateinit var articleListLive: MutableLiveData<Channel>
