@@ -1,4 +1,4 @@
-package com.diyainfotech.covid19.ui.news
+package com.diyainfotech.covid19.ui.gujarat
 
 import android.os.Bundle
 import android.view.*
