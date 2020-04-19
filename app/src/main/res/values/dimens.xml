@@ -6,4 +6,6 @@
     <dimen name="india_state_name">16sp</dimen>
     <dimen name="india_state_type_name">10sp</dimen>
     <dimen name="india_state_type_value">18sp</dimen>
+    <dimen name="list_item_spacing">16dp</dimen>
+    <dimen name="list_item_spacing_half">8dp</dimen>
 </resources>
