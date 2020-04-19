@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.diyainfotech.covid19.api.india.IndiaData
 import com.diyainfotech.covid19.api.india.IndiaRepository
-import com.diyainfotech.covid19.api.india.StateWiseDataResponse
+import com.diyainfotech.covid19.api.india.StateWiseDataResponseV2
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
@@ -14,8 +14,8 @@ class HomeViewModel : ViewModel() {
     val indiaData: MutableLiveData<IndiaData?> by lazy {
         MutableLiveData<IndiaData?>()
     }
-    val stateDistrictWise: MutableLiveData<StateWiseDataResponse?> by lazy {
-        MutableLiveData<StateWiseDataResponse?>()
+    val stateDistrictWise: MutableLiveData<StateWiseDataResponseV2?> by lazy {
+        MutableLiveData<StateWiseDataResponseV2?>()
     }
 
 

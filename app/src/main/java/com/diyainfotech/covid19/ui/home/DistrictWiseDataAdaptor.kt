@@ -11,7 +11,7 @@ import kotlin.properties.Delegates
 class DistrictWiseDataAdaptor() : RecyclerView.Adapter<DistrictWiseDataViewHolder>() {
 
     var districtList: List<District> by Delegates.observable(emptyList()) { _, old, new ->
-        autoNotify(old, new) { o, n -> o.name == n.name }
+        autoNotify(old, new) { o, n -> o.district == n.district }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DistrictWiseDataViewHolder {

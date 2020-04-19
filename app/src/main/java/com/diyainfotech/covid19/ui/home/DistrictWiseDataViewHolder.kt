@@ -14,7 +14,7 @@ class DistrictWiseDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemV
     private val txtConfirmedCase = itemView.findViewById(R.id.txt_confirmed_case) as TextView
 
     fun bindStateData(district: District) {
-        txtDistrictName.text = district.name
+        txtDistrictName.text = district.district
         txtConfirmedCase.text = "${district.confirmed}"
     }
 }
