@@ -3,14 +3,9 @@ package com.diyainfotech.covid19.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.diyainfotech.covid19.Constant
-import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.StateWise
 import com.diyainfotech.covid19.databinding.IndiaDataCellBinding
-import com.diyainfotech.covid19.databinding.NewsViewCellBinding
 import com.diyainfotech.covid19.extensions.autoNotify
-import com.diyainfotech.covid19.extensions.inflate
-import com.diyainfotech.covid19.ui.news.NewsViewHolder
 import kotlin.properties.Delegates
 
 class StateWiseDataIndiaAdaptor() : RecyclerView.Adapter<IndiaDataViewHolder>() {

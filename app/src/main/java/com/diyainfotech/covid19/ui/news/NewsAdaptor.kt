@@ -3,13 +3,9 @@ package com.diyainfotech.covid19.ui.news
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.databinding.NewsViewCellBinding
-import com.diyainfotech.covid19.databinding.NotificationCellBinding
 import com.diyainfotech.covid19.extensions.autoNotify
-import com.diyainfotech.covid19.extensions.inflate
 import com.diyainfotech.covid19.rssFeedParser.Article
-import com.diyainfotech.covid19.ui.notification.NotificationViewHolder
 import kotlin.properties.Delegates
 
 class NewsAdaptor(private val onNewsCardClickListener: OnNewsCardClickListener) :

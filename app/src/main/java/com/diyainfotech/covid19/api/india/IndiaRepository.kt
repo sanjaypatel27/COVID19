@@ -1,8 +1,6 @@
 package com.diyainfotech.covid19.api.india
 
 import com.diyainfotech.covid19.api.ApiFactory
-import com.diyainfotech.covid19.api.india.notification.NotificationList
-import okhttp3.ResponseBody
 import retrofit2.Response
 
 class IndiaRepository {

@@ -1,7 +1,6 @@
 package com.diyainfotech.covid19.util
 
 import android.annotation.SuppressLint
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit

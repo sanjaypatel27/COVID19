@@ -3,12 +3,9 @@ package com.diyainfotech.covid19.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.District
 import com.diyainfotech.covid19.databinding.DistrictWiseDataCellBinding
-import com.diyainfotech.covid19.databinding.IndiaDataCellBinding
 import com.diyainfotech.covid19.extensions.autoNotify
-import com.diyainfotech.covid19.extensions.inflate
 import kotlin.properties.Delegates
 
 class DistrictWiseDataAdaptor() : RecyclerView.Adapter<DistrictWiseDataViewHolder>() {

@@ -1,15 +1,15 @@
 package com.diyainfotech.covid19.ui.gujarat
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.diyainfotech.covid19.Constant
 import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.databinding.FragmentWebviewBinding
 import com.diyainfotech.covid19.ui.util.WebViewUtil
-import com.diyainfotech.covid19.util.CustomWebView
 
 
 class GujaratFragment : Fragment() {

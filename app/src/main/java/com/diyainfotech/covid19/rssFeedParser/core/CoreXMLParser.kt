@@ -4,8 +4,8 @@ import com.diyainfotech.covid19.rssFeedParser.Article
 import com.diyainfotech.covid19.rssFeedParser.Channel
 import com.diyainfotech.covid19.rssFeedParser.Image
 import com.diyainfotech.covid19.rssFeedParser.RSSKeywords
-import org.xmlpull.v1.XmlPullParserException
 import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.ByteArrayInputStream
 import java.io.IOException

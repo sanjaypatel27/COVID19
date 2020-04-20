@@ -1,6 +1,9 @@
 package com.diyainfotech.covid19.ui.home
 
-import com.diyainfotech.covid19.api.india.*
+import com.diyainfotech.covid19.api.india.District
+import com.diyainfotech.covid19.api.india.IndiaData
+import com.diyainfotech.covid19.api.india.State
+import com.diyainfotech.covid19.api.india.StateWiseDataResponseV2
 
 object IndiaDataServiceManager {
     var indiaData: IndiaData? = null

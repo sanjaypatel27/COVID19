@@ -1,11 +1,7 @@
 package com.diyainfotech.covid19.ui.news
 
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
@@ -15,7 +11,6 @@ import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.databinding.NewsViewCellBinding
 import com.diyainfotech.covid19.rssFeedParser.Article
 import com.diyainfotech.covid19.ui.util.WebViewUtil
-import com.diyainfotech.covid19.util.CustomWebView
 import com.diyainfotech.covid19.util.TimeDiffUtil
 
 class NewsViewHolder(
