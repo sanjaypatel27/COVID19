@@ -15,5 +15,5 @@ interface Covid19IndiaInterface {
     fun getAllStateDataAsync(): Deferred<Response<StateWiseDataResponseV2>>
 
     @GET(EndPoints.INDIA_UPDATE_LOG)
-    fun getAllNotification(): Deferred<Response<NotificationList>>
+    fun getAllNotificationAsync(): Deferred<Response<NotificationList>>
 }
