@@ -1,21 +1,14 @@
 package com.diyainfotech.covid19.ui.home
 
-import android.view.View
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.diyainfotech.covid19.R
 import com.diyainfotech.covid19.api.india.District
-import com.diyainfotech.covid19.api.india.StateWise
+import com.diyainfotech.covid19.databinding.DistrictWiseDataCellBinding
 
-class DistrictWiseDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    private val txtDistrictName = itemView.findViewById(R.id.district_name) as TextView
-    private val txtConfirmedCase = itemView.findViewById(R.id.txt_confirmed_case) as TextView
-
+class DistrictWiseDataViewHolder(private val binding: DistrictWiseDataCellBinding) :
+    RecyclerView.ViewHolder(binding.root) {
     fun bindStateData(district: District) {
-        txtDistrictName.text = district.name
-        txtConfirmedCase.text = "${district.confirmed}"
+        binding.districtName.text = district.district
+        binding.txtConfirmedCase.text = "${district.confirmed}"
     }
 }
 

@@ -38,17 +38,4 @@ object RetrofitFactory {
 
         return httpClient
     }
-
-    private val worldBuilder: Retrofit.Builder = Retrofit.Builder()
-        .baseUrl(EndPoints.COVID19_WORLD_BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-
-    fun worldRetrofit(httpClient: OkHttpClient.Builder): Retrofit = worldBuilder
-        .client(httpClient.build())
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-
-
 }

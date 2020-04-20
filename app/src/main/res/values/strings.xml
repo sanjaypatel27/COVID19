@@ -4,6 +4,7 @@
     <string name="title_home">@string/india</string>
     <string name="title_world">World</string>
     <string name="title_news">News</string>
+    <string name="title_notification">Notification</string>
 
     <!--  INDIA  -->
     <string name="india">India</string>

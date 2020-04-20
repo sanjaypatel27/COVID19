@@ -9,5 +9,7 @@ data  class StateWise (
     var state : String,
     var deltaconfirmed : String,
     var deltadeaths : String,
-    var deltarecovered : String
+    var deltarecovered : String,
+    var statecode : String,
+    var statenotes : String
 )

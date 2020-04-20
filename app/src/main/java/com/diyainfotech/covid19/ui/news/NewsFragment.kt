@@ -9,17 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.diyainfotech.covid19.R
+import com.diyainfotech.covid19.databinding.FragmentNewsBinding
 import com.diyainfotech.covid19.rssFeedParser.Article
 import com.diyainfotech.covid19.rssFeedParser.Channel
 import com.diyainfotech.covid19.ui.util.WebViewActivity
 import com.diyainfotech.covid19.ui.util.WebViewUtil
 
 class NewsFragment : Fragment(), OnNewsCardClickListener {
+    private lateinit var binding: FragmentNewsBinding
     private val newsViewModel: NewsViewModel by viewModels()
     private val linearLayoutManager: LinearLayoutManager = LinearLayoutManager(context)
-    private lateinit var newsRecyclerView: RecyclerView
     private lateinit var newsAdaptor: NewsAdaptor
 
     override fun onCreateView(
@@ -27,14 +26,14 @@ class NewsFragment : Fragment(), OnNewsCardClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_news, container, false)
+        binding = FragmentNewsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newsRecyclerView = view.findViewById(R.id.newsRecyclerView)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        newsRecyclerView.layoutManager = linearLayoutManager
+        binding.newsRecyclerView.layoutManager = linearLayoutManager
         subscribers()
     }
 
@@ -50,7 +49,7 @@ class NewsFragment : Fragment(), OnNewsCardClickListener {
         newsAdaptor = NewsAdaptor(this)
         newsAdaptor.articleList =
             channel.articles
-        newsRecyclerView.adapter = newsAdaptor
+        binding.newsRecyclerView.adapter = newsAdaptor
     }
 
     override fun onNewsCardSourceLinkClick(article: Article) {

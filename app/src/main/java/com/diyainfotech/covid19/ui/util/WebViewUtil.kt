@@ -21,7 +21,6 @@ object WebViewUtil {
         customWebView.settings.loadWithOverviewMode = true
         customWebView.settings.domStorageEnabled = true
         customWebView.settings.javaScriptCanOpenWindowsAutomatically = true
-        customWebView.settings.setRenderPriority(WebSettings.RenderPriority.HIGH)
         customWebView.isScrollbarFadingEnabled = false
         customWebView.isVerticalScrollBarEnabled = false
         customWebView.settings.setGeolocationEnabled(true)
