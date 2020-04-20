@@ -1,22 +1,26 @@
 package com.diyainfotech.covid19.ui.news
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.diyainfotech.covid19.R
+import com.diyainfotech.covid19.databinding.NewsViewCellBinding
+import com.diyainfotech.covid19.databinding.NotificationCellBinding
 import com.diyainfotech.covid19.extensions.autoNotify
 import com.diyainfotech.covid19.extensions.inflate
 import com.diyainfotech.covid19.rssFeedParser.Article
+import com.diyainfotech.covid19.ui.notification.NotificationViewHolder
 import kotlin.properties.Delegates
 
-class NewsAdaptor(private val onNewsCardClickListener: OnNewsCardClickListener) : RecyclerView.Adapter<NewsViewHolder>() {
+class NewsAdaptor(private val onNewsCardClickListener: OnNewsCardClickListener) :
+    RecyclerView.Adapter<NewsViewHolder>() {
     var articleList: List<Article> by Delegates.observable(emptyList()) { _, old, new ->
         autoNotify(old, new) { o, n -> o.title == n.title }
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val inflatedView = parent.inflate(R.layout.news_view_cell, false)
-        return NewsViewHolder(inflatedView,onNewsCardClickListener)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = NewsViewHolder(
+        NewsViewCellBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+        onNewsCardClickListener
+    )
 
     override fun getItemCount(): Int {
         return articleList.size
