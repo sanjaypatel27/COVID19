@@ -1,24 +1,14 @@
 package com.diyainfotech.covid19.ui.notification
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.diyainfotech.covid19.R
-import kotlinx.android.synthetic.main.notification_cell.view.*
+import com.diyainfotech.covid19.api.india.notification.Notification
+import com.diyainfotech.covid19.databinding.NotificationCellBinding
 
 
-class NotificationViewHolder internal constructor(
-    inflater: LayoutInflater,
-    parent: ViewGroup
-) : RecyclerView.ViewHolder(
-    inflater.inflate(
-        R.layout.notification_cell,
-        parent,
-        false
-    )
-) {
-
-    internal val update: TextView = itemView.update
-    internal val timestamp: TextView = itemView.timestamp
+class NotificationViewHolder(private val notificationCellBinding: NotificationCellBinding) :
+    RecyclerView.ViewHolder(notificationCellBinding.root) {
+    fun bindData(notification: Notification) {
+        notificationCellBinding.update.text = notification.update
+        notificationCellBinding.timestamp.text = notification.getStringFromTimeStamp()
+    }
 }
