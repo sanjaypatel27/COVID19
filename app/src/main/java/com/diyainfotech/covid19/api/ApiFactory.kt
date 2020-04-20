@@ -10,4 +10,5 @@ object ApiFactory {
 
     val covid19IndiaData : Covid19IndiaInterface = retrofit(httpClient).create(Covid19IndiaInterface::class.java)
     val covid19WorldData : Covid19WorldInterface = worldRetrofit(httpClient).create(Covid19WorldInterface::class.java)
+    val covid19NotificationList : Covid19IndiaInterface = retrofit(httpClient).create(Covid19IndiaInterface::class.java)
 }

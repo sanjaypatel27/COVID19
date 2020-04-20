@@ -70,7 +70,7 @@ class HomeFragment : Fragment() {
         loadData(false)
         homeViewModel.indiaData.observe(viewLifecycleOwner, Observer {
             IndiaDataServiceManager.indiaData = it!!
-            setupRecyclerview(it!!)
+            setupRecyclerview(it)
         })
         homeViewModel.stateDistrictWise.observe(viewLifecycleOwner, Observer {
             IndiaDataServiceManager.stateDistrictWise = it!!

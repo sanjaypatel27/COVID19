@@ -12,7 +12,7 @@ import kotlin.properties.Delegates
 class StateWiseDataIndiaAdaptor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var stateList: List<StateWise> by Delegates.observable(emptyList()) {
-        prop, old, new ->
+            _, old, new ->
         autoNotify(old, new) { o, n -> o.state == n.state }
     }
 

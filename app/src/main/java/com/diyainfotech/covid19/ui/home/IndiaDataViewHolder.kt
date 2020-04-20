@@ -21,7 +21,6 @@ class IndiaDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.findViewById(R.id.txt_deceased_case_delta) as TextView
 
     fun bindIndiaData(stateWise: StateWise) {
-        val stateWise = IndiaDataServiceManager.indiaData!!.stateList[0]
         txtConfirmedCase.text = stateWise.confirmed
         txtActiveCase.text = stateWise.active
         txtRecoveredCase.text = stateWise.recovered
