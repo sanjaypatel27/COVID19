@@ -1,30 +1,27 @@
 package com.diyainfotech.covid19.ui.util
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.diyainfotech.covid19.R
-import com.diyainfotech.covid19.util.CustomWebView
+import com.diyainfotech.covid19.databinding.FragmentWebviewBinding
 
 class WebViewActivity : AppCompatActivity() {
-    lateinit var customWebView: CustomWebView
-    lateinit var swipeRefresh: SwipeRefreshLayout
+    private lateinit var binding: FragmentWebviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_webview)
-        viewInflation()
+        binding = FragmentWebviewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        loadData()
     }
 
-    private fun viewInflation() {
-        customWebView = findViewById(R.id.customWebView)
-        swipeRefresh = findViewById(R.id.swipeRefresh)
-        swipeRefresh.setColorSchemeResources(R.color.colorAccent)
-        WebViewUtil.setUpWebView(customWebView, swipeRefresh)
+    private fun loadData() {
+        binding.swipeRefresh.setColorSchemeResources(R.color.colorAccent)
+        WebViewUtil.setUpWebView(binding.customWebView, binding.swipeRefresh)
         loadUrl()
-        swipeRefresh.setOnRefreshListener(OnRefreshListener
+        binding.swipeRefresh.setOnRefreshListener(OnRefreshListener
         {
             loadUrl()
         })
@@ -32,7 +29,7 @@ class WebViewActivity : AppCompatActivity() {
 
     private fun loadUrl() {
         if (!TextUtils.isEmpty(WebViewUtil.webViewUrl)) {
-            WebViewUtil.loadUrlIntoWebView(WebViewUtil.webViewUrl, customWebView)
+            WebViewUtil.loadUrlIntoWebView(WebViewUtil.webViewUrl, binding.customWebView)
         }
     }
 }

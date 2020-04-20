@@ -3,7 +3,6 @@ package com.diyainfotech.covid19.api.india
 import com.diyainfotech.covid19.api.EndPoints
 import com.diyainfotech.covid19.api.india.notification.NotificationList
 import kotlinx.coroutines.Deferred
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -15,5 +14,5 @@ interface Covid19IndiaInterface {
     fun getAllStateDataAsync(): Deferred<Response<StateWiseDataResponseV2>>
 
     @GET(EndPoints.INDIA_UPDATE_LOG)
-    fun getAllNotification(): Deferred<Response<NotificationList>>
+    fun getAllNotificationAsync(): Deferred<Response<NotificationList>>
 }

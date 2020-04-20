@@ -1,41 +1,54 @@
 package com.diyainfotech.covid19.ui.home
 
+import android.annotation.SuppressLint
 import android.view.View
-import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.diyainfotech.covid19.R
-import com.diyainfotech.covid19.api.india.KeyValues
 import com.diyainfotech.covid19.api.india.StateWise
+import com.diyainfotech.covid19.databinding.IndiaDataCellBinding
 
-class IndiaDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val txtConfirmedCase = itemView.findViewById(R.id.txt_confirmed_case) as TextView
-    private val txtConfirmedCaseDelta =
-        itemView.findViewById(R.id.txt_confirmed_case_delta) as TextView
-    private val txtActiveCase = itemView.findViewById(R.id.txt_active_case) as TextView
-    private val txtActiveCaseDelta = itemView.findViewById(R.id.txt_active_case_delta) as TextView
-    private val txtRecoveredCase = itemView.findViewById(R.id.txt_recovered_case) as TextView
-    private val txtRecoveredCaseDelta =
-        itemView.findViewById(R.id.txt_recovered_case_delta) as TextView
-    private val txtDeceasedCase = itemView.findViewById(R.id.txt_deceased_case) as TextView
-    private val txtDeceasedCaseDelta =
-        itemView.findViewById(R.id.txt_deceased_case_delta) as TextView
+class IndiaDataViewHolder(private val binding: IndiaDataCellBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+    private val linearLayoutManager: LinearLayoutManager = LinearLayoutManager(itemView.context)
+    private var districtWiseDataAdaptor = DistrictWiseDataAdaptor()
 
+
+    @SuppressLint("SetTextI18n")
     fun bindIndiaData(stateWise: StateWise) {
-        txtConfirmedCase.text = stateWise.confirmed
-        txtActiveCase.text = stateWise.active
-        txtRecoveredCase.text = stateWise.recovered
-        txtDeceasedCase.text = stateWise.deaths
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.districtWiseDataRecyclerView.layoutManager = linearLayoutManager
+        binding.districtLayout.visibility = View.GONE
+        binding.stateName.text = stateWise.state
+        binding.txtConfirmedCase.text = stateWise.confirmed
+        binding.txtActiveCase.text = stateWise.active
+        binding.txtRecoveredCase.text = stateWise.recovered
+        binding.txtDeceasedCase.text = stateWise.deaths
 
         stateWise.let {
-            if (stateWise.confirmed.toInt() > 0) {
-                txtConfirmedCaseDelta.text = "[+${stateWise.deltaconfirmed}]"
+            if (stateWise.deltaconfirmed.toInt() > 0) {
+                binding.txtConfirmedCaseDelta.text = "[+${stateWise.deltaconfirmed}]"
             }
-            if (stateWise.recovered.toInt() > 0) {
-                txtRecoveredCaseDelta.text = "[+${stateWise.deltarecovered}]"
+            if (stateWise.deltarecovered.toInt() > 0) {
+                binding.txtRecoveredCaseDelta.text = "[+${stateWise.deltarecovered}]"
             }
-            if (stateWise.deaths.toInt() > 0) {
-                txtDeceasedCaseDelta.text = "[+${stateWise.deltadeaths}]"
+            if (stateWise.deltadeaths.toInt() > 0) {
+                binding.txtDeceasedCaseDelta.text = "[+${stateWise.deltadeaths}]"
             }
+
+            binding.stateCellCard.setOnClickListener(View.OnClickListener {
+                if (binding.districtLayout.visibility == View.GONE) {
+                    binding.districtLayout.visibility = View.VISIBLE
+                    districtWiseDataAdaptor.districtList =
+                        IndiaDataServiceManager.getDistrictListFromDistrictData(stateWise.state)
+                    if (districtWiseDataAdaptor.districtList.isNotEmpty()) {
+                        binding.districtWiseDataRecyclerView.adapter = districtWiseDataAdaptor
+                    } else {
+                        binding.districtLayout.visibility = View.GONE
+                    }
+                } else {
+                    binding.districtLayout.visibility = View.GONE
+                }
+            })
         }
     }
 }
