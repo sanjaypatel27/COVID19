@@ -16,7 +16,6 @@
             android:layout_height="match_parent"
             android:layout_weight="0.6"
             android:padding="5sp"
-            android:text="Thane"
             android:textColor="@color/districtName"
             android:textSize="@dimen/india_state_name" />
 
@@ -26,8 +25,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.4"
             android:textAlignment="textEnd"
-            android:text="4"
-            android:textColor="@color/districtName"
+            android:textColor="@color/confirmedText"
             android:textSize="@dimen/india_state_type_value" />
     </LinearLayout>
 
